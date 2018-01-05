@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jup.sharing.dao.UserInfoDao">
+	<select id="findUserInfo" parameterType="com.jup.sharing.daobean.UserInfoBean" resultType="com.jup.sharing.daobean.UserInfoBean"> 
+		<![CDATA[ 
+            SELECT 
+			    userName,
+			    userPasswd,
+			    userRole
+			FROM 
+				t_user
+		    WHERE
+		        userName=#{userName}
+		]]>
+	</select>
+	
+</mapper>
+

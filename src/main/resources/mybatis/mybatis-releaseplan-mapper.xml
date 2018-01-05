@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jup.sharing.dao.ReleasePlanDao">
+	<select id="getReleasePlan" resultType="com.jup.sharing.daobean.ReleasePlanBean">
+		SELECT
+			planNum,
+			userName,
+			createTime,
+			modifyTime,
+			requirement,
+			develop,
+			firsttest,
+			secondtest,
+			thirdtest,
+			graystart
+		FROM
+			t_releaseplan
+	</select>
+	
+	<select id="getReleasePlanDetail" parameterType="com.jup.sharing.daobean.RelePlanDaoParam" 
+		resultType="com.jup.sharing.daobean.ReleasePlanBean">
+		SELECT
+			planNum,
+			userName,
+			createTime,
+			modifyTime,
+			requirement,
+			develop,
+			firsttest,
+			secondtest,
+			thirdtest,
+			graystart
+		FROM
+			t_releaseplan
+		WHERE
+			planNum = #{relePlanName}
+	</select>
+	
+	<delete id="deleReleasePlanByName" parameterType="com.jup.sharing.daobean.RelePlanDaoParam" >
+		DELETE FROM
+			t_releaseplan
+		WHERE
+			planNum = #{relePlanName}
+	</delete>
+	
+	<delete id = "deleReleasePlanList" parameterType = "java.util.List">    
+        <![CDATA[    
+           delete from t_releaseplan where planNum in    
+        ]]>    
+        <foreach collection="list" item="palaname" open="(" separator="," close=")">
+        	#{palaname}    
+        </foreach>    
+    </delete>  
+	
+</mapper>
+
