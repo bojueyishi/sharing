@@ -14,3 +14,7 @@
 	top:0;
 	right:-500px;
 }
+
+#tableSet thead tr th,#tableSet tbody tr td{
+	text-align: center;
+}

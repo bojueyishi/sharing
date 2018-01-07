@@ -17,11 +17,12 @@
 <meta name="apple-mobile-web-app-title" content="Amaze UI" />
 <link rel="stylesheet" href="static/assets/css/amazeui.min.css" />
 <link rel="stylesheet" href="static/assets/css/admin.css">
+<link rel="stylesheet" href="static/assets/css/home.css">
 </head>
 <body>
 	<header class="am-topbar am-topbar-inverse admin-header">
 		<div class="am-topbar-brand">
-			<img class="am-header-icon-custom" src="static/assets/img/logo.png" alt="" width="30px" height="30px"/>
+			<!-- <img class="am-header-icon-custom" src="static/assets/img/logo.png" alt="" width="30px" height="30px"/> -->
 			<span style="margin-left:5px"><strong>欢迎来到 -- Sharing Platform</strong></span>
 		</div>
 
@@ -32,21 +33,11 @@
 		</button>
 
 		<div class="am-collapse am-topbar-collapse" id="topbar-collapse">
-
-			<ul
-				class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
-				<li><a href="javascript:;"><span class="am-icon-envelope-o"></span>
-						收件箱 <span class="am-badge am-badge-warning">5</span></a></li>
-				<li class="am-dropdown" data-am-dropdown><a
-					class="am-dropdown-toggle" data-am-dropdown-toggle
-					href="javascript:;"> <span class="am-icon-user"></span>你好，jwx373864<span
-						class="am-icon-caret-down"></span>
-				</a>
-					<ul class="am-dropdown-content">
-						<li><a href="#"><span class="am-icon-user"></span> 资料</a></li>
-						<li><a href="#"><span class="am-icon-power-off"></span>
-								退出</a></li>
-					</ul></li>
+			<ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
+				<li class="am-hide-sm-only"><a href="javascript:;"><span class="am-icon-arrows-alt"></span>
+						<span class="admin-fullText">你好，jwx373864</span></a></li>
+				<li class="am-hide-sm-only"><a href="javascript:;"><span class="am-icon-arrows-alt"></span>
+						<span class="admin-fullText">退出</span></a></li>
 				<li class="am-hide-sm-only"><a href="javascript:;"
 					id="admin-fullscreen"><span class="am-icon-arrows-alt"></span>
 						<span class="admin-fullText">全屏</span></a></li>
@@ -80,7 +71,7 @@
 				</ul>
 
 				<div class="am-panel am-panel-default admin-sidebar-panel">
-					<div class="am-panel-bd">
+					<div class="am-panel-bd notice">
 						<p>
 							<span class="am-icon-bookmark"></span> 公告
 						</p>
