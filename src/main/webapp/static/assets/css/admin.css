@@ -10,7 +10,12 @@
 html,
 body {
   height: 100%;
-  overflow: hidden;
+  overflow: hidden; 
+}
+
+body{
+	padding: 0 20px 0 20px;
+	/* background: black; */
 }
 
 ul {
@@ -27,7 +32,7 @@ ul {
   left: 0;
   right: 0;
   z-index: 1500;
-  font-size: 1.4rem;
+  /* font-size: 1.4rem; */
   margin-bottom: 0;
 }
 
@@ -39,7 +44,10 @@ ul {
   position: relative;
   height: 100%;
   padding-top: 51px;
-  background: #f3f3f3;
+  /* padding: 51px 0px 0px 20px; */
+  /* background: #f3f3f3; */
+  /* background: rgb(40, 45, 47); */
+  background: white;
 }
 
 .admin-menu {
@@ -68,6 +76,12 @@ ul {
   color: #5c5c5c;
   padding-left: 24px;
 }
+
+.admin-sidebar-list a:hover{
+    cursor:	pointer; 
+    background: #787777;
+    color: rgb(255,255,255);
+} 
 
 .admin-sidebar-list li:first-child {
   border-top: none;
@@ -258,6 +272,8 @@ ul {
     -o-transition: background-color .3s ease;
     transition: background-color .3s ease;
     background: #E4E4E4;
+    cursor:pointer;
+    
   }
 
   .admin-content-list li {

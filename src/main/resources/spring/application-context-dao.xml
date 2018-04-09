@@ -12,5 +12,15 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<property name="mapperInterface" value="com.jup.sharing.dao.ReleasePlanDao" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
+	
+	<bean id="workFlowDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.jup.sharing.dao.WorkFlowDao" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="equipmentDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.jup.sharing.dao.EquipmentDao" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 
 </beans>

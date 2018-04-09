@@ -9,4 +9,7 @@
 	<bean id="relePlanService" class="com.jup.sharing.service.RelePlanService">
 	</bean>
 	
+	<bean id="workFlowService" class="com.jup.sharing.service.WorkFlowService">
+	</bean>
+	
 </beans>

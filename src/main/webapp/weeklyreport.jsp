@@ -26,5 +26,7 @@
 	</div>
 
 	<hr>
+	
+	<div style="border:1px solid #E8E6DB;margin:0 auto;text-align:center;width:300px;padding:50px">待扩展</div>
 </body>
 </html>

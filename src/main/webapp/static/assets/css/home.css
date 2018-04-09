@@ -1,5 +1,36 @@
 @CHARSET "UTF-8";
+html,body{
+	height:100%;
+	padding:0 0 0 0 ;
+}
+
+.homeTitle{
+	margin-left:5px;
+	text-shadow:3px 10px 10px black;
+	color: rgb(255, 255, 255);
+	/* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; */
+	/* font-family:Times, serif, "Times New Roman"; */
+}
+
 .notice{
-	border:1px solid grey;
-	box-shadow:3px 3px 30px black;
+	/* box-shadow:3px 3px 30px black; */
+}
+
+.navbar-left{
+	width:15%;
+	background-color: rgb(40, 45, 47);
+	/* box-shadow:10px 10px 30px black; */
+}
+
+.myActive{
+	background: #F0FFF0;
+    border-left:5px solid #3A5634;
+    cursor:	pointer;
+}
+
+.navbar-content{
+	width:85%;
+	border-left:1px solid #D9DAD9;
+	/* box-shadow:10px 10px 30px black; */
+	/* margin-left:1em; */
 }

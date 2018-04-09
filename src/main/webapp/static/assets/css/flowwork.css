@@ -1,0 +1,44 @@
+@CHARSET "UTF-8";
+.mytabs{
+	margin:0 1em;
+}
+
+.newWorkFlowGroup{
+	margin-top:1em;
+	margin-left:2em;
+	margin-right:2em;
+}
+
+.newWorkFlowGroup label{
+	/* color: #6495ED; */
+	color:black;
+	font-size:0.8em;
+}
+
+.newWorkFlowGroup button{
+	width:100%;
+	background-color:#87CB7E;
+	margin-bottom:2em;
+}
+
+select{
+	width:100%;
+	height:40px;
+	border:1px solid #DDDDD7;
+	background-color:#fff;
+	outline:0;
+	padding:5px 10px;	
+}
+
+select:focus{
+	outline:0;
+}
+
+
+.pageBar{
+	margin:0 1em;
+}
+
+#tab1,#tab2{
+	height:315px;
+}

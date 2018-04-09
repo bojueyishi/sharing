@@ -1,13 +1,14 @@
 $(function() {
-	customDate();
-	var alertDelayTime = 1500;//毫秒
 	//在schudele.jsp页面加载时，就用ajax请求版本计划列表第一页
 	var pageSizeConstant = 5;
 	
 	getTableData({pageNum:0,pageSize:pageSizeConstant});
 	
 	 $("#optionBar").find("button[new]").click(function(){
-		 alert("new");
+		 $("#editor-popup .am-popup-hd h4").text("新增 / New");
+		 $("#showContainer").empty();
+		 $("#showContainer").html("haha");
+		 $(this).attr("data-am-modal","{target: '#editor-popup'}");
 	 });
 	 
 	 $("#optionBar").find("button[delete]").click(function(){
@@ -70,6 +71,7 @@ $(function() {
 							'		class="am-btn am-btn-default am-btn-xs am-text-secondary item-viewer">'+
 							'		<span class="am-icon-eye"></span> 查看'+
 							'	  </button>'+
+							/*'	  <shiro:hasRole name="admin">'+*/
 							'     <button'+
 							'		class="am-btn am-btn-default am-btn-xs am-text-secondary item-editor">'+
 							'		<span class="am-icon-pencil-square-o"></span> 编辑'+
@@ -78,6 +80,7 @@ $(function() {
 							'		 class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only item-remove">'+
 							'		 <span class="am-icon-trash-o"></span> 删除'+
 							'	  </button>'+
+							/*'     </shiro:hasRole>'+*/
 							'	</div>'+
 							'</div>'+
 							'</td>'+
@@ -122,6 +125,7 @@ $(function() {
 		   	        	 }
 		   	    });
 		   		
+		   		$("#editor-popup .am-popup-hd h4").text("编辑 / Editor");
 		    	$(this).attr("data-am-modal","{target: '#editor-popup'}");
 		   	 });
 		   	 
@@ -186,156 +190,15 @@ $(function() {
 	 }
 	 
 	  function generateChart(releasePlanDetail){
-			 var myChart = echarts.init(document.getElementById('chartContainer'));
-			 var data ={
-		    		 "name": releasePlanDetail.planNum,
-		    		 "children": [
-		    		  {
-		    		   "name": "需求串讲",
-		    		   "children": [
-		    		    {
-		    		     "name": releasePlanDetail.requirement,
-		    		    }
-		    		   ]
-		    		  },
-		    		  {
-		    		   "name": "开发联调",
-		    		   "children": [
-		    		    {
-		    		     "name": releasePlanDetail.develop,
-		    		    }
-		    		   ]
-		    		  },
-		    		  {
-		    		   "name": "SDV1",
-		    		   "children": [
-		    		    {
-		    		     "name": releasePlanDetail.firsttest,
-		    		    }
-		    		   ]
-		    		  },
-		    		  {
-		    		   "name": "SDV2",
-		    		   "children": [
-		    		    {
-		    		     "name": releasePlanDetail.secondtest,
-		    		    }
-		    		   ]
-		    		  },
-		    		  {
-		    		   "name": "SDV3",
-		    		   "children": [
-		    		    {
-		    		     "name": releasePlanDetail.thirdtest,
-		    		    }
-		    		   ]
-		    		  },
-		    		  {
-			    		   "name": "启动灰度",
-			    		   "children": [
-			    		    {
-			    		     "name": releasePlanDetail.graystart,
-			    		    }
-			    		   ]
-			    		  },
-		    		  
-		    		 ]
-		    		};
-
 		 
-	        // 指定图表的配置项和数据
-	        var option = {
-	        		tooltip: {
-	                    trigger: 'item',
-	                    triggerOn: 'mousemove'
-	                },
-	                series: [
-	                    {
-	                        type: 'tree',
-	                        data: [data],
-
-	                        top: '1%',
-	                        left: '7%',
-	                        bottom: '10%',
-	                        right: '25%',
-
-	                        symbolSize: 7,
-
-	                        label: {
-	                            normal: {
-	                                position: 'left',
-	                                verticalAlign: 'middle',
-	                                align: 'right',
-	                                fontSize: 9
-	                            }
-	                        },
-
-	                        leaves: {
-	                            label: {
-	                                normal: {
-	                                    position: 'right',
-	                                    verticalAlign: 'middle',
-	                                    align: 'left'
-	                                }
-	                            }
-	                        },
-
-	                        expandAndCollapse: true,
-	                        animationDuration: 550,
-	                        animationDurationUpdate: 750
-	                    }
-	                ]
-	        };
-
-		        // 使用刚指定的配置项和数据显示图表。
-		        myChart.setOption(option);
-		 }
-
-	  
-	 function ajaxRequest(url,option,callback){
-		 $.ajax({
-			 type:"POST", 
-	         url:url, 
-	         dataType:"json",      
-	         contentType:"application/json",               
-	         data:JSON.stringify(option), 
-	         success:callback
-		});
-	 }
-	  
-	 function generateAlertContainer(text,className){
-		 var $alertInfo = $("<div data-am-alert style='box-shadow:5px 5px 40px black'><p></p></div>");
-    	 	$("body").append($alertInfo);
-    	 
-    	 	$alertInfo.find("p").text(text);
-    	 	$alertInfo.attr("class",className).animate({right:'0px'},"slow").delay(alertDelayTime).animate({right:'-500px'},"slow",function(){
-    			//从dom中删除alertcontainer
-    	 		$alertInfo.remove();
-    		});
-	 }
-	 
-	 function customDate(){
-		 Date.prototype.format = function(fmt) { 
-		     var o = { 
-		        "M+" : this.getMonth()+1,                 //月份 
-		        "d+" : this.getDate(),                    //日 
-		        "H+" : this.getHours(),                   //小时 
-		        "m+" : this.getMinutes(),                 //分 
-		        "s+" : this.getSeconds(),                 //秒 
-		        "q+" : Math.floor((this.getMonth()+3)/3), //季度 
-		        "S"  : this.getMilliseconds()             //毫秒 
-		    }; 
-		    if(/(y+)/.test(fmt)) {
-		            fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length)); 
-		    }
-		     for(var k in o) {
-		        if(new RegExp("("+ k +")").test(fmt)){
-		             fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
-		         }
-		     }
-		    return fmt; 
-		} 
-	 }
+	  }
 });
+
+function checkPermission(){
+	  $("#optionBar .am-btn-toolbar button").attr("disabled", true);
+	  console.log("start"+$("#tableSet tbody tr td div").find(".item-editor").text());
+	  $("#tableSet tbody tr td div").find(".item-editor").attr("disabled", true);
+	  
+}
 
 

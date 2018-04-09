@@ -7,14 +7,6 @@
 	/* margin:0 3em 0 3em; */	
 }
 
-.alertContainer{
-	position:fixed;
-	width:500px;
-	text-align:center;
-	top:0;
-	right:-500px;
-}
-
 #tableSet thead tr th,#tableSet tbody tr td{
-	text-align: center;
+	/* text-align: center; */
 }

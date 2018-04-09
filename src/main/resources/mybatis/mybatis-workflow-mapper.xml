@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jup.sharing.dao.WorkFlowDao">
+	
+	<insert id="insertWorkFlow" parameterType="com.jup.sharing.daobean.WorkFlowDaoBean">
+	<![CDATA[
+			INSERT INTO 
+					t_workflow
+					(
+					   	userName,
+					    workflowName,
+					    equipmentName,
+					    startUseTime,
+					    backTime,
+					    status,
+					    createTime
+					) 
+			VALUES
+					(
+						#{userName},
+						#{workflowName},
+						#{equipmentName},
+						#{startUseTime},
+						#{backTime},
+						#{status},
+						#{createTime}
+					)
+		]]>
+	</insert>
+	
+	<select id="getWorkFlow" resultType="com.jup.sharing.daobean.WorkFlowDaoBean">
+	<![CDATA[
+		SELECT
+			userName,
+  			workflowName,
+  			equipmentName,
+  			startUseTime,
+  			backTime,
+  			status,
+  			createTime
+		FROM
+			t_workflow
+		where
+			status = #{status}
+		]]>
+		
+		<if test='userName != null'>
+		    AND userName = #{userName}
+		</if>
+		
+	</select>
+	
+
+</mapper>
+

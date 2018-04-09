@@ -1,0 +1,12 @@
+
+button:focus {
+	outline:none;
+}
+
+.alertContainer{
+	position:fixed;
+	width:500px;
+	text-align:center;
+	top:0;
+	right:-500px;
+}

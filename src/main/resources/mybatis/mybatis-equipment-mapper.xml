@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jup.sharing.dao.EquipmentDao">
+	<select id="getAvailableEquipment" resultType="com.jup.sharing.daobean.EquipmentDaoBean">
+	<![CDATA[
+		SELECT
+		    equipmentName,
+		    groupName,
+            status
+		FROM
+			t_equipment
+		where
+			status = #{status}
+		And
+			groupName = #{groupName}
+		]]>
+	</select>
+	
+	<select id="updateEquipmentStatus" resultType="com.jup.sharing.daobean.EquipmentDaoBean">
+	<![CDATA[
+		update t_equipment
+		set	status=#{status}
+		where	
+		    equipmentName = #{equipmentName}
+		and
+			groupName = #{groupName}
+		]]>
+	</select>
+	
+</mapper>
+

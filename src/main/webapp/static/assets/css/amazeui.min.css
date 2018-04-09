@@ -9611,9 +9611,10 @@ opacity
 }
 
 .am-modal-hd {
-	padding: 15px 10px 5px 10px;
+	padding: 10px 10px 10px 10px;
 	font-size: 1.8rem;
-	font-weight: 500
+	font-weight: 500;
+	border-bottom:1px solid #e6e6e6;
 }
 
 .am-modal-hd+.am-modal-bd {
@@ -12191,6 +12192,7 @@ tbody.am-collapse.am-in {
 
 .am-accordion-gapped .am-active .am-accordion-title {
 	background-color: #f5f5f5;
+	/* background-color:#fbd0ae; */
 	color: rgba(0, 0, 0, .8)
 }
 

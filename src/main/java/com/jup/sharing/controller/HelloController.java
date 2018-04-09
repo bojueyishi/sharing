@@ -2,17 +2,27 @@ package com.jup.sharing.controller;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.DisabledAccountException;
+import org.apache.shiro.authc.ExcessiveAttemptsException;
+import org.apache.shiro.authc.ExpiredCredentialsException;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.LockedAccountException;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.UnauthorizedException;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.jup.sharing.daobean.UserInfoBean;
 import com.jup.sharing.service.UserInfoService;
-import com.jup.sharing.util.SessionUtil;
 
 @Controller
 public class HelloController
@@ -20,54 +30,87 @@ public class HelloController
     @Resource(name = "userInfoService")
     UserInfoService userInfoService = null;
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String index(HttpServletRequest request)
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    public String index(HttpServletRequest request, RedirectAttributes model)
     {
-        if (SessionUtil.sessionIsValid(request))
+        if (SecurityUtils.getSubject().getSession().getAttribute("token") != null)
         {
-            return "redirect:/home.action";
+            //return "redirect:/home.action";
+            return "home";
         }
         else
         {
             return "login";
         }
     }
-
-    @RequestMapping(value = "/home", method = RequestMethod.GET)
-    public ModelAndView home(ModelAndView modelAndView, HttpServletRequest request)
-    {
-        modelAndView.setViewName("home");
-        return modelAndView;
-    }
     
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(ModelAndView modelAndView, HttpServletRequest request,
-        @RequestParam("username") String username, @RequestParam("password") String password)
+        @RequestParam("username") String username, @RequestParam("password") String password, Model model,
+        RedirectAttributes attr)
     {
-        if (SessionUtil.sessionIsValid(request))
+        String msg = null;
+        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+        token.setRememberMe(true);
+        Subject subject = SecurityUtils.getSubject();
+
+        try
         {
-            //modelAndView.setViewName("home");
-            return "redirect:/home.action";
-        }
-        else
-        {
-            UserInfoBean userInfo = userInfoService.getUserInfo(username);
-            if (userInfo != null)
+            subject.login(token);
+            if (subject.isAuthenticated())
             {
-                //如果不为空，则表示数据库有值，登录成功：跳转到主页，并设置session
-                HttpSession session = request.getSession();
-                session.setAttribute("username", "haha");
-                session.setMaxInactiveInterval(5);
-                /*modelAndView.setViewName("home");
-                modelAndView.addObject("msg", "login success!");*/
+                Session session = subject.getSession();
+                session.setAttribute("token", token);
+                session.setTimeout(10000);
                 return "redirect:/home.action";
             }
             else
             {
-                /*modelAndView.setViewName("login");
-                modelAndView.addObject("msg", "用户名或密码错误！");*/
-                return "forward:/login.action";
+                return "login";
             }
         }
+        catch (IncorrectCredentialsException e)
+        {
+            msg = "用户名或密码错误!";
+            model.addAttribute("message", msg);
+        }
+        catch (ExcessiveAttemptsException e)
+        {
+            msg = "登录失败次数过多!";
+            model.addAttribute("message", msg);
+        }
+        catch (LockedAccountException e)
+        {
+            msg = "帐号已被锁定!";
+            model.addAttribute("message", msg);
+        }
+        catch (DisabledAccountException e)
+        {
+            msg = "帐号已被禁用!";
+            model.addAttribute("message", msg);
+        }
+        catch (ExpiredCredentialsException e)
+        {
+            msg = "帐号已过期!";
+            model.addAttribute("message", msg);
+        }
+        catch (UnknownAccountException e)
+        {
+            msg = "用户名或密码错误!";
+            model.addAttribute("message", msg);
+        }
+        catch (UnauthorizedException e)
+        {
+            msg = "您没有得到相应的授权!" + e.getMessage();
+            model.addAttribute("message", msg);
+        }
+
+        return "login";
     }
+
+    /* @RequestMapping(value = "/logout", method = RequestMethod.POST)
+    public String logout(ModelAndView modelAndView, HttpServletRequest request,
+        @RequestParam("username") String username, @RequestParam("password") String password, Model model,
+        RedirectAttributes attr)*/
+
 }
