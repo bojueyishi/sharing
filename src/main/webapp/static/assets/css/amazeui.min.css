@@ -228,9 +228,9 @@ body, button, input, select, textarea {
 	}
 }
 
-a {
+/* a {
 	color: #0e90d2
-}
+} */
 
 a:focus, a:hover {
 	color: #095f8a
@@ -2922,9 +2922,9 @@ output {
 }
 
 .am-topbar-inverse {
-	background-color: #0e90d2;
-	border-color: #0b6fa2;
-	color: #eee
+	background-color: white;
+	/* border-color: #0b6fa2; */
+	color: black;
 }
 
 .am-topbar-inverse a {

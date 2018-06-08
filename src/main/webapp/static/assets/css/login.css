@@ -1,6 +1,9 @@
 @CHARSET "UTF-8";
 
-html,body{height:100%}
+html,body{
+	height:100%;
+	background-color:rgb(51, 64, 84);
+}
 
 .loginTitleContainer{
 	max-width:500px;
@@ -20,6 +23,7 @@ html,body{height:100%}
 
 .loginTitleContainer span{
 	font-size:2em;
+	color:white;
 }
 
 .loginFormRadius{

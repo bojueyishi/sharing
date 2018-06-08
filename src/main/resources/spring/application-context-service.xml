@@ -12,4 +12,7 @@
 	<bean id="workFlowService" class="com.jup.sharing.service.WorkFlowService">
 	</bean>
 	
+	<bean id="productProblemService" class="com.jup.sharing.service.ProductProblemService">
+	</bean>
+	
 </beans>

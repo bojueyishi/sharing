@@ -28,17 +28,11 @@
 
 </head>
 <body>
-	<header class="am-topbar am-topbar-inverse admin-header">
+	<%-- <header class="am-topbar am-topbar-inverse admin-header">
 		<div class="am-topbar-brand">
 			<img alt="" src="static/assets/img/logo_home.ico" width="35px" height="35px">
 			<span class="homeTitle">欢迎来到 -- Sharing</span>
 		</div>
-
-		<!-- <button
-			class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
-			data-am-collapse="{target: '#topbar-collapse'}">
-			<span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span>
-		</button> -->
 
 		<div class="am-collapse am-topbar-collapse" id="topbar-collapse">
 			<ul
@@ -50,7 +44,23 @@
 						class="am-icon-sign-out"> 退出</span></a></li>
 			</ul>
 		</div>
-	</header>
+	</header> --%>
+	
+	<div class="topbararea">
+		<div class="logobrand">
+			<img alt="" src="static/assets/img/logo_home.ico">
+			<span class="homeTitle">欢迎来到 -- Sharing !</span>
+		</div>
+		
+		<div class="oplist">
+			<ul>
+				<li><a href="javascript:;"> <span
+						class="admin-fullText">欢迎你: <shiro:principal/>
+					</span></a></li>
+				<li><a href="logout"> <span class="am-icon-sign-out"></span></a></li>
+			</ul>
+		</div>
+	</div>
 
 	<div class="am-cf admin-main">
 		<div class="navbar-left am-fl">
@@ -66,6 +76,8 @@
 							class="am-icon-edit"></span> 周报</a></li>
 					<li><a id="flowwork" onclick="changNav(this)"><span
 							class="am-icon-comments-o"></span> 电子流</a></li>
+					<li><a id="productproblem" onclick="changNav(this)"><span
+							class="am-icon-bar-chart-o"></span> 现网问题</a></li>
 					<li class="admin-parent"><a class="am-cf"
 						data-am-collapse="{target: '#collapse-nav'}"><span
 							class="am-icon-cogs"></span> 设置 <span
@@ -83,9 +95,9 @@
 		</div>
 
 		<div class="admin-content navbar-content am-fr">
-			<div class="admin-content-body" style="background-color:grey" id="mainContainer">
-				<iframe id="iframepage" width="100%" scrolling="no"
-					onload="changeFrameHeight()" src="schedule.jsp"></iframe>
+			<div class="admin-content-body" id="mainContainer">
+				<iframe id="iframepage" src="productproblem.jsp" width="100%" height="100%" 
+				scrolling="yes"></iframe>
 			</div>
 		</div>
 	</div>

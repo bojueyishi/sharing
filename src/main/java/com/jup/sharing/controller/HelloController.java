@@ -29,7 +29,7 @@ public class HelloController
 {
     @Resource(name = "userInfoService")
     UserInfoService userInfoService = null;
-
+    
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String index(HttpServletRequest request, RedirectAttributes model)
     {
@@ -43,7 +43,7 @@ public class HelloController
             return "login";
         }
     }
-    
+
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(ModelAndView modelAndView, HttpServletRequest request,
         @RequestParam("username") String username, @RequestParam("password") String password, Model model,
@@ -53,7 +53,7 @@ public class HelloController
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         token.setRememberMe(true);
         Subject subject = SecurityUtils.getSubject();
-
+        
         try
         {
             subject.login(token);
@@ -61,7 +61,7 @@ public class HelloController
             {
                 Session session = subject.getSession();
                 session.setAttribute("token", token);
-                session.setTimeout(10000);
+                session.setTimeout(100000);
                 return "redirect:/home.action";
             }
             else
@@ -104,13 +104,13 @@ public class HelloController
             msg = "您没有得到相应的授权!" + e.getMessage();
             model.addAttribute("message", msg);
         }
-
+        
         return "login";
     }
-
+    
     /* @RequestMapping(value = "/logout", method = RequestMethod.POST)
     public String logout(ModelAndView modelAndView, HttpServletRequest request,
         @RequestParam("username") String username, @RequestParam("password") String password, Model model,
         RedirectAttributes attr)*/
-
+    
 }

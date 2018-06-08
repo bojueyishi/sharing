@@ -39,7 +39,7 @@
 	</div>
 	
 	<div class="am-u-lg-6 am-u-md-8 am-u-sm-centered loginTitleContainer">
-		<span><i>Welcome to Sharing</i></span>
+		<span><i>Welcome to Sharing !</i></span>
 	</div>
 	
 	<div class="am-u-lg-6 am-u-md-8 am-u-sm-centered maincontainer loginFormRadius">

@@ -2,12 +2,50 @@
 html,body{
 	height:100%;
 	padding:0 0 0 0 ;
+	background-color:rgb(233, 236, 243);
+}
+
+.topbararea{
+	width:100%;
+	position:fixed;
+	top:0;
+	left:0;
+	background-color: white;
+	z-index:1000;
+	clear:both;
+	padding:10px;
+	box-shadow:0 5px 10px grey;
+}
+
+.topbararea .logobrand{
+	float:left;
+	margin-left:1em;
+}
+
+.topbararea .oplist{
+	float:right;
+}
+
+.topbararea .oplist ul{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+
+.topbararea .oplist ul li{
+	float:left;
+	padding:10px;
+	font-size:1em;
 }
 
 .homeTitle{
-	margin-left:5px;
-	text-shadow:3px 10px 10px black;
-	color: rgb(255, 255, 255);
+	margin-left:10px;
+	text-shadow:10px 10px 10px black;
+	color: #303030;
+	font-size:1.2em;
+	font-weight:bolder;
+	font-style:italic;
+	letter-spacing:3px;
 	/* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; */
 	/* font-family:Times, serif, "Times New Roman"; */
 }
@@ -18,19 +56,33 @@ html,body{
 
 .navbar-left{
 	width:15%;
-	background-color: rgb(40, 45, 47);
+	background-color: rgb(233, 236, 243);
+	padding:1em;
+	
 	/* box-shadow:10px 10px 30px black; */
 }
 
 .myActive{
-	background: #F0FFF0;
-    border-left:5px solid #3A5634;
+	/* background: #F0FFF0; */
+	background: #CD9B9B;
+    border-left:5px solid #B03060;
     cursor:	pointer;
 }
 
 .navbar-content{
 	width:85%;
 	border-left:1px solid #D9DAD9;
+	
 	/* box-shadow:10px 10px 30px black; */
 	/* margin-left:1em; */
+}
+
+#mainContainer{
+	background-color:gray;
+	height:100%;
+	padding:10px;
+}
+
+#mainContainer iframe{
+	border-radius:10px;
 }

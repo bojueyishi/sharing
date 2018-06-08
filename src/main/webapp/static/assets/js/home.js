@@ -1,6 +1,6 @@
 function changeFrameHeight(){
 	var ifm= document.getElementById("iframepage"); 
-    ifm.height=document.documentElement.clientHeight || document.body.clientHeight;
+   /* ifm.height=(document.documentElement.clientHeight || document.body.clientHeight)-200;*/
 }
 
 function changNav(target){
